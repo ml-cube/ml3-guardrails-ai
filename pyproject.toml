@@ -1,8 +1,8 @@
 [project]
-name = "ML3-Python-library-template"
+name = "Guardrails-AI"
 version = "0.1.7"
 authors = [ {name="MLcube"}]
-description = "ML Repository template"
+description = "Integration for Guardrails AI"
 readme = "README.md"
 requires-python = ">=3.12"
 # list of project dependencies
