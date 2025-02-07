@@ -1,0 +1,29 @@
+# builds the library package using MakeFile utilities
+# it only trigger when a tag like v0.20.34 or v0.3.1@DEPLOY_ENV
+# is pushed on the main branch.
+# for now, it is not possibile to run builds on other branches
+
+name: package
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+# The job or workflow run requires a permissions setting with id-token: write.
+# You won't be able to request the OIDC JWT ID token if the permissions setting
+# for id-token is set to read or none. The aws-actions/configure-aws-credentials
+# action receives a JWT from the GitHub OIDC provider, and then requests an access token from AWS.
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/package
+        env:
+          AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ROLE: ${{ secrets.AWS_ROLE }}

@@ -1,0 +1,54 @@
+[project]
+name = "ML3-Python-library-template"
+version = "0.1.7"
+authors = [ {name="MLcube"}]
+description = "ML Repository template"
+readme = "README.md"
+requires-python = ">=3.12"
+# list of project dependencies
+dependencies = [
+    "pyyaml",
+]
+
+
+# optional grouped dependencies that are installed only when explicitly requested
+[project.optional-dependencies]
+
+data = [
+    "polars==1.13.1"
+]
+
+
+# dev dependencies are installed during development but no for package
+[dependency-groups]
+
+# dependencies needed to build package
+build = ["twine", "build"]
+
+# dependencies needed to lint and run tests
+dev = [
+    "mypy",
+    "pytest",
+    "pytest-cov",
+    "pytest-mock",
+    "pytest-asyncio",
+    "pytest-xdist[psutil]",
+    "ruff",
+]
+
+
+### BUILD
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+### TOOLS
+
+[tool.setuptools]
+packages = ["ml3_repo_template"]
+
+
+[[tool.uv.index]]
+name = "internal-repo"
+url = "https://mlcube-883313729965.d.codeartifact.eu-west-3.amazonaws.com/pypi/ml3-platform/simple/"
