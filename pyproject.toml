@@ -1,5 +1,5 @@
 [project]
-name = "Guardrails-AI"
+name = "ML3-Guardrails-AI"
 version = "0.1.7"
 authors = [ {name="MLcube"}]
 description = "Integration for Guardrails AI"
@@ -7,7 +7,13 @@ readme = "README.md"
 requires-python = ">=3.12"
 # list of project dependencies
 dependencies = [
+    "guardrails-ai>=0.5.15",
+    "ipykernel>=6.29.5",
+    "jupyter>=1.1.1",
+    "langchain-google-genai>=2.0.9",
+    "langchain>=0.3.17",
     "pyyaml",
+    "google-genai>=1.0.0",
 ]
 
 
@@ -46,7 +52,7 @@ build-backend = "setuptools.build_meta"
 ### TOOLS
 
 [tool.setuptools]
-packages = ["ml3_repo_template"]
+packages = ["ml3_guardrails_ai"]
 
 
 [[tool.uv.index]]
